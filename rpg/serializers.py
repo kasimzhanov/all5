@@ -1,5 +1,6 @@
-from rest_framework import serializers
 from .models import Product
+from rest_framework import serializers
+
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,5 +11,6 @@ class ProductSerializer(serializers.ModelSerializer):
             'price',      
             'model',     
             'category',   
-            'created_at',  
+            'created_at',
+            'image',  
         ]

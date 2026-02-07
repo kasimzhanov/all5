@@ -1,7 +1,7 @@
 from rest_framework import generics, filters
 from .models import Product
 from .serializers import ProductSerializer
-
+from rest_framework.parsers import MultiPartParser, FormParser
 class ProductListAPIView(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
@@ -27,3 +27,10 @@ class ProductListAPIView(generics.ListAPIView):
             queryset = queryset.filter(price__lte=max_price)
 
         return queryset
+
+
+
+class ProductCreateAPIView(generics.CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    parser_classes = (MultiPartParser, FormParser)  

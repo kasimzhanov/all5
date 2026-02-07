@@ -1,11 +1,13 @@
-from django.db import models
+# from .models import Category, Model   <- удаляем эту строку
 
+from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
@@ -16,6 +18,7 @@ class Model(models.Model):
 
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = 'Модель'
         verbose_name_plural = 'Модели'
@@ -27,6 +30,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     model = models.ForeignKey(Model, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='products/', null=True, blank=True)
 
     def __str__(self):
         return self.title

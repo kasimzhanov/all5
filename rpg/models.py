@@ -24,7 +24,7 @@ class Model(models.Model):
         verbose_name_plural = 'Модели'
 
 
-class Product(models.Model):
+class ProductModel(models.Model):
     title = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
